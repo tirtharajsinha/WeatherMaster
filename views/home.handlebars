@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+
+    <link rel="stylesheet" href="/weather-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <style>
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 0.4fr 1.6fr;
+            background: url(/bg/{{data.bg}}.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: var(--primary-color);
+        }
+    </style>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="current">
+            <div class="search-city">
+                <i class="fal fa-thermometer-three-quarters"></i>
+                <input type="text" placeholder="Kolkata, IN" id="search" autocomplete="off">
+                <i class="fal fa-search"></i>
+            </div>
+            <div class="searchresult"></div>
+
+            <div class="curweatherdata">
+                <div class="cityname">{{data.name}}, {{data.country}} <i class="fal fa-map-marker-alt"></i></div>
+                <div class="wdata">
+                    <div class="cur-temp">
+                        <span class="temp">{{data.temp}}°</span>
+                        <span>~ 3</span>
+                    </div>
+                    <div class="other-data">
+                        <span class="hum"></span>
+                        <span class="wind"><i class="fal fa-wind"></i> Wind : {{data.wind}} kmph</span>
+                    </div>
+                </div>
+                <div class="cweatherDes">
+                    {{{data.des}}}
+                </div>
+                <div class="cloc">
+                    <i class="wi {{data.icon}}"></i>
+                    {{data.country}}, Friday, Feb 21, 2023, 12:44AM
+                </div>
+                <div class="cloud">
+                    <div class="visual">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="cloudp">
+                        <span>{{data.cloud}}%</span>
+                        <span>Cloud</span>
+                    </div>
+                </div>
+                <div class="more-details">
+                    <div class="maxtemp"><i class="fal fa-temperature-up"></i> Max temperature : {{data.tmax}}°</div>
+                    <div class="mintemp"><i class="fal fa-temperature-down"></i> Min temperature : {{data.tmin}}°</div>
+                    <div class="pressure"><i class="fal fa-tint"></i> Humidity : {{data.hum}}%</div>
+                </div>
+            </div>
+        </div>
+        <div class="forcust">
+            <div class="branding">
+                WEATHER<br>MASTER
+            </div>
+            <div class="wforcast">
+                <span>Weather Forcast</span>
+            </div>
+            <div class="weatherDes">
+                {{{data.des}}}
+            </div>
+            <div class="loc">
+                <i class="wi {{data.icon}}"></i>
+                {{data.fullcountry}}, {{datetime}}
+            </div>
+
+
+            <div class="fordata">
+                <section class="splide" id="splide1" aria-label="Splide Basic HTML Example">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            {{#each forcast}}
+                            <li class="splide__slide">
+                                <span class="time">{{this.time}}</span>
+                                <i class="wi {{this.icon}}"></i>
+                                <span class="fortemp">{{this.temp}}°C</span>
+                            </li>
+                            {{/each}}
+
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 150">
+                <defs>
+                    <linearGradient gradientTransform="rotate(270)" x1="50%" y1="0%" x2="50%" y2="100%"
+                        id="sssquiggly-grad">
+                        <stop stop-color="hsl(50, 98%, 60%)" stop-opacity="1" offset="0%"></stop>
+                        <stop stop-color="hsla(23, 100%, 50%, 1.00)" stop-opacity="1" offset="100%"></stop>
+                    </linearGradient>
+                </defs>
+                <g stroke-width="2.5" stroke="url(#sssquiggly-grad)" fill="none" stroke-linecap="round"
+                    transform="matrix(1,0,0,1,-5,-395.48522567749023)">
+                    <path
+                        d="M10,10C21.805555555555557,13.958333333333332,40.97222222222223,36.5,66.66666666666667,29C92.36111111111111,21.5,105.55555555555557,-32.25,133.33333333333334,-26C161.11111111111111,-19.75,172.22222222222223,60.458333333333336,200,59C227.77777777777777,57.541666666666664,238.8888888888889,-30.916666666666668,266.6666666666667,-33C294.44444444444446,-35.083333333333336,305.5555555555556,41.916666666666664,333.33333333333337,49C361.11111111111114,56.083333333333336,372.22222222222223,1,400,1C427.77777777777777,1,438.8888888888889,49.416666666666664,466.6666666666667,49C494.44444444444446,48.583333333333336,505.5555555555556,-5.375,533.3333333333334,-1C561.1111111111111,3.375,572.2222222222222,71.04166666666667,600,70C627.7777777777778,68.95833333333333,638.8888888888889,-0.7916666666666661,666.6666666666667,-6C694.4444444444446,-11.208333333333334,705.5555555555557,47.291666666666664,733.3333333333334,45C761.1111111111111,42.708333333333336,786.1111111111111,-4.083333333333332,800,-17"
+                        transform="matrix(1,0,0,1,0,444)"></path>
+
+                </g>
+            </svg>
+
+            <div class="othercitydata">
+                <section class="splide" id="splide2" aria-label="Splide Basic HTML Example">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="othercity">
+                                    <span>10°</span>
+                                    <span>London</span>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="othercity">
+                                    <span>10°</span>
+                                    <span>London</span>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="othercity">
+                                    <span>10°</span>
+                                    <span>London</span>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="othercity">
+                                    <span>10°</span>
+                                    <span>London</span>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="othercity">
+                                    <span>10°</span>
+                                    <span>London</span>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="othercity">
+                                    <span>10°</span>
+                                    <span>London</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+
+        </div>
+    </div>
+    <div id="loader"><i class="fad fa-spinner"></i></div>
+    {{#if save}}
+    <div class="save" data-name="{{data.name}}" data-country="{{data.country}}" data-lat="{{data.lat}}"
+        data-lon="{{data.lon}}" onclick="savetolocal(this)">Save</div>
+    {{/if}}
+
+    <script src="/fontawasome5.15-pro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+        function geticon(code) {
+            var prefix = 'wi-';
+            var icon = weatherIcons[code].icon;
+
+            // If we are not in the ranges mentioned above, add a day/night prefix.
+            if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
+                icon = 'day-' + icon;
+            }
+
+            // Finally tack on the prefix.
+            icon = prefix + icon;
+            document.getElementById("wicon").classList.add("wi")
+            document.getElementById("wicon").classList.add(icon);
+
+        }
+
+
+        var splide1 = new Splide('#splide1', {
+            type: 'slide',
+            drag: 'free',
+            snap: true,
+            perPage: 6,
+            breakpoints: {
+                900: {
+                    perPage: 5,
+                },
+                800: {
+                    perPage: 4,
+                },
+                700: {
+                    perPage: 3,
+                }
+            },
+            pagination: false,
+            wheel: false,
+            arrows: false
+        });
+        splide1.mount();
+
+        var splide2 = new Splide('#splide2', {
+            type: 'slide',
+            drag: 'free',
+            snap: true,
+            perPage: 6,
+            breakpoints: {
+                900: {
+                    perPage: 5,
+                },
+                800: {
+                    perPage: 4,
+                },
+                700: {
+                    perPage: 3,
+                }
+            },
+            pagination: false,
+            wheel: false,
+            arrows: false
+        });
+        splide2.mount();
+        document.getElementById("search").addEventListener("input", (e) => {
+            if (e.target.value == "") {
+                document.querySelector(".searchresult").innerHTML = "";
+            }
+        });
+        document.getElementById("search").addEventListener("change", (e) => {
+            let query = e.target.value;
+            if (query == "") {
+                return;
+            }
+            fetch(`/api/${query}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("data");
+                    let display = ""
+                    data.forEach(res => {
+                        state = res.state + ", "
+                        if (res.state == "") {
+                            state = ""
+                        }
+                        display += `
+                        <div class="sugg" 
+                        data-name="${res.name}" 
+                        data-country="${res.country}" 
+                        data-state="${state}"
+                        data-lat="${res.lat}"
+                        data-lon=${res.lon}
+                        onclick="findweather(this)"
+                        >
+                            <span>${res.name}</span>
+                            <span>${state}${res.country}</span>
+                        </div>
+                        `
+                    });
+                    document.querySelector(".searchresult").innerHTML = display;
+                });
+        })
+
+        function findweather(ele) {
+            document.querySelector("#loader").style.display = "flex";
+            let lat = ele.dataset.lat;
+            let lon = ele.dataset.lon;
+            let name = ele.dataset.name;
+            let country = ele.dataset.country;
+            let url = `/weather/${country}/${name}/${lat}/${lon}`
+            window.location.href = url;
+        }
+        let condition = "{{data.bg}}"
+        let theme;
+        if (condition == "clear") {
+            theme = "light";
+        }
+        else if (condition == "thunder") {
+            theme = "dark"
+        }
+        else if (condition == "cloud") {
+            theme = "dark";
+        }
+        else if (condition == "snow") {
+            theme = "light"
+        }
+        else if (condition == "rain") {
+            theme = "dark"
+        }
+        if (theme == "light") {
+            document.querySelector("body").classList.add("light");
+        }
+
+
+
+        function savetolocal(ele) {
+            let name = ele.dataset.name;
+            let country = ele.dataset.country;
+            let lat = ele.dataset.lat;
+            let lon = ele.dataset.lon
+            fetch(`/save/${country}/${name}/${lat}/${lon}`)
+                .then((response) => {
+                    ele.innerHTML = "Saved";
+                    ele.style.background = "lightgreen";
+                })
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
