@@ -72,6 +72,12 @@ body {
   display: flex;
   flex-direction: column;
   margin: auto;
+  position: relative;
+}
+
+.worning {
+  font-size: 18px;
+  color: var(--primary-color);
 }
 
 .searchresult .sugg {
@@ -104,6 +110,21 @@ body {
 .searchresult .sugg span:nth-child(2) {
   font-size: 14px;
   color: var(--primary-color);
+}
+
+.miniloader {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 5px solid var(--primary-color);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+  margin: 10px;
+  position: absolute;
+  bottom: -40px;
+  right: 0px;
 }
 
 #loader {

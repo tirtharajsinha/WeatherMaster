@@ -284,7 +284,7 @@ router.get("/weather/:country/:name/:lat/:lon", (req, res) => {
                 data: filtered,
                 forcast: forcust,
                 datetime: cdatetime,
-                save: true
+                save: false
             })
         });
     })

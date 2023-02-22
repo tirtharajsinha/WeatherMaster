@@ -33,7 +33,8 @@
                 <input type="text" placeholder="Kolkata, IN" id="search" autocomplete="off">
                 <i class="fal fa-search"></i>
             </div>
-            <div class="searchresult"></div>
+            <div class="searchresult">
+            </div>
 
             <div class="curweatherdata">
                 <div class="cityname">{{data.name}}, {{data.country}} <i class="fal fa-map-marker-alt"></i></div>
@@ -252,11 +253,15 @@
             if (query == "") {
                 return;
             }
+            document.querySelector(".searchresult").innerHTML = `<div class="miniloader"></div>`
             fetch(`/api/${query}`)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log("data");
+                    console.log(data.length);
                     let display = ""
+                    if (data.length == 0) {
+                        display = `<p class="worning">No place found.</p>`;
+                    }
                     data.forEach(res => {
                         state = res.state + ", "
                         if (res.state == "") {
