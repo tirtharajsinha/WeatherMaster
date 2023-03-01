@@ -296,19 +296,19 @@
         }
         let condition = "{{data.bg}}"
         let theme;
-        if (condition == "clear") {
+        if (condition.startsWith("clear")) {
             theme = "light";
         }
-        else if (condition == "thunder") {
+        else if (condition.startsWith("thunder")) {
             theme = "dark"
         }
-        else if (condition == "cloud") {
+        else if (condition.startsWith("cloud")) {
             theme = "dark";
         }
-        else if (condition == "snow") {
+        else if (condition.startsWith("snow")) {
             theme = "light"
         }
-        else if (condition == "rain") {
+        else if (condition.startsWith("rain")) {
             theme = "dark"
         }
         if (theme == "light") {

@@ -1,6 +1,10 @@
 function bgOnWeather(code) {
     let bg = ""
     let catagory = Math.floor(code / 100)
+    let imgid = Math.floor(Math.random() * 2);
+    if (imgid == 0) {
+        imgid = "";
+    }
     if (code == 800) {
         // clear
         bg = "clear";
@@ -29,6 +33,8 @@ function bgOnWeather(code) {
         //thunder
         bg = "thunder"
     }
+    // bg = "rain"
+    bg += imgid;
 
     return bg;
 }
