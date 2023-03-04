@@ -9,7 +9,7 @@
   "author": "Tirtharaj Sinha",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.21"
   },
   "dependencies": {
     "ejs": "^3.1.8",
