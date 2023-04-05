@@ -17,7 +17,7 @@ app.disable('etag');
 // Middlewares
 app.use(RequestInfo);
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "static")));
 app.use("/", require(path.join(__dirname, "routes/weather.js")));
 
@@ -29,5 +29,5 @@ app.listen(PORT, () => {
     console.log("|   WeatherMaster  |");
     console.log("+------------------+");
     console.log(`Weather app listening on port ${PORT}`);
-    console.log(`Application started at http://127.0.0.1:${PORT}`);
+    console.log(`Application started at http://0.0.0.0:${PORT}`);
 });
