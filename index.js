@@ -14,6 +14,7 @@ app.set('view engine', 'handlebars');
 app.disable('etag');
 
 
+
 // Middlewares
 app.use(RequestInfo);
 app.use(express.json())

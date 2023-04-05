@@ -146,7 +146,8 @@ router.get("/", async (req, res) => {
                 Title: "Home",
                 data: filtered,
                 forcast: forcust,
-                datetime: cdatetime
+                datetime: cdatetime,
+                ishome: true
             })
         });
     })
@@ -280,11 +281,12 @@ router.get("/weather/:country/:name/:lat/:lon", (req, res) => {
             // console.log(forcust);
             res.render("home", {
                 layout: "main",
-                Title: "Home",
+                Title: name,
                 data: filtered,
                 forcast: forcust,
                 datetime: cdatetime,
-                save: false
+                save: false,
+                ishome: false
             })
         });
     })

@@ -5,7 +5,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+
+    <!-- Primary Meta Tags -->
+
+
+    <title>{{Title}} | WeatherMaster</title>
+
+    {{#if ishome}}
+    <meta name="title" content="WeatherMaster">
+    <meta name="description" content="A web-based graphical weather application.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://WeatherMaster.github.io">
+    <meta property="og:title" content="WeatherMaster">
+    <meta property="og:description" content="A web-based graphical weather application.">
+    <meta property="og:image" content="static\meta\screen_desktop2.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://WeatherMaster.github.io">
+    <meta property="twitter:title" content="WeatherMaster">
+    <meta property="twitter:description" content="A web-based graphical weather application.">
+    <meta property="twitter:image" content="static\meta\screen_desktop2.png">
+
+
+
+    {{else}}
+    <meta name="title" content="View today's weather at {{data.name}} | WeatherMaster">
+    <meta name="description" content="A web-based graphical weather application.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://WeatherMaster.github.io">
+    <meta property="og:title" content="View today's weather at {{data.name}} | WeatherMaster">
+    <meta property="og:description" content="A web-based graphical weather application.">
+    <meta property="og:image" content="static\meta\screen_desktop2.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://WeatherMaster.github.io">
+    <meta property="twitter:title" content="View today's weather at {{data.name}} | WeatherMaster">
+    <meta property="twitter:description" content="A web-based graphical weather application.">
+    <meta property="twitter:image" content="static\meta\screen_desktop2.png">
+    {{/if}}
+
+
+
+
+
+
+
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/weather-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
