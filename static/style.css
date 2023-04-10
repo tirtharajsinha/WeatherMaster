@@ -130,7 +130,7 @@ body {
   right: 0px;
 }
 
-#loader {
+/* #loader {
   font-size: 100px;
   position: fixed;
   width: 100%;
@@ -142,11 +142,11 @@ body {
   align-items: center;
   background-color: #55555540;
   backdrop-filter: blur(10px);
-}
+} */
 
-#loader i {
+/* #loader i {
   animation: spinner 2s linear infinite;
-}
+} */
 
 @keyframes spinner {
   100% {
